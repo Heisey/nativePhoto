@@ -1,0 +1,27 @@
+
+# Client
+mobile/node_modules/
+
+mobile/.expo/
+mobile/dist/
+mobile/web-build/
+
+mobile/*.orig.*
+mobile/*.jks
+mobile/*.p8
+mobile/*.p12
+mobile/*.key
+mobile/*.mobileprovision
+
+mobile/.metro-health-check*
+
+mobile/npm-debug.*
+mobile/yarn-debug.*
+mobile/yarn-error.*
+
+mobile/.DS_Store
+mobile/*.pem
+
+mobile/.env*.local
+
+mobile/*.tsbuildinfo
