@@ -1,23 +1,21 @@
 
-import * as Expo from 'expo'
-import * as RN from 'react-native'
-import RootConfig from '../app.json'
+import 'react-native-gesture-handler';
 
-const App = () => {
+import * as React from 'react'
+import * as ReactNavigate from '@react-navigation/native'
+
+import App from './App'
+
+const Main: React.FC = () => {
 
   return (
-    <RN.View style={styles.container}>
-      <RN.Text>Puppies 6</RN.Text>
-    </RN.View>
+    <>
+      {/* <ReactNavigate.NavigationContainer> */}
+        <App />
+      {/* </ReactNavigate.NavigationContainer> */}
+    </>
   )
 }
 
-const styles = RN.StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
 
-export default App
+export default Main
