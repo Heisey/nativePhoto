@@ -12,12 +12,23 @@ export interface LandingProps {
 
 
 const Landing: React.FC<LandingProps> = (props) => {
-  const navigation = Hooks.common.useNavigation<ReactStack.StackNavigationProp<Core.I.RootStack>>()
+  const navigation = Hooks.common.useNavigation<ReactStack.StackNavigationProp<Core.I.RootStack, 'auth'>>()
 
   return (
     <RN.View style={styles.container}>
-      <RN.Text>Landing 5</RN.Text>
-      <RN.Button onPress={() => navigation.navigate('about')} title='about' />
+      <RN.Text>Welcome to Photo</RN.Text>
+      <RN.Button 
+        onPress={() => navigation.navigate('home')} 
+        title='Sign In' 
+      />
+      <RN.Button 
+        onPress={() => navigation.navigate('auth', { screen: 'signIn'} )}
+        title='Sign Up'
+      />
+      <RN.Button 
+        onPress={() => navigation.navigate('about')}
+        title='about'
+      />
         
     </RN.View>
   )
@@ -27,7 +38,8 @@ const styles = RN.StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    fontFamily: ''
   }
 })
 

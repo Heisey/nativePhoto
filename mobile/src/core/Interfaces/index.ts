@@ -1,2 +1,2 @@
 
-export type { RootStack } from './RootStack'
+export type { AuthStack, RootStack } from './RootStack'

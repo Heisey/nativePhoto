@@ -1,7 +1,6 @@
 
 import * as React from 'react'
 import * as ExpoFont from 'expo-font'
-import * as Navigation from '@react-navigation/native'
 import * as Splash from 'expo-splash-screen'
 
 export interface FontProps extends React.PropsWithChildren {}

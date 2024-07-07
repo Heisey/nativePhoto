@@ -2,19 +2,35 @@
 import * as React from 'react'
 import * as ReactStack from '@react-navigation/stack'
 
+import * as Core from 'core'
 import Landing from 'screens/Landing'
 import About from 'screens/About'
+import SignIn from 'screens/Auth/SignIn'
+import SignUp from 'screens/Auth/SignUp'
 
 export interface AppProps {}
 
 const App: React.FC<AppProps> = (props) => {
-  const Stack = ReactStack.createStackNavigator()
+  const RootStack = ReactStack.createStackNavigator<Core.I.RootStack>()
+  const AuthStack = ReactStack.createStackNavigator<Core.I.AuthStack>()
+
+  const AuthScreens = () => (
+    <AuthStack.Navigator initialRouteName='signIn'>
+      <AuthStack.Screen name='signIn' component={SignIn} />
+      <AuthStack.Screen name='signUp' component={SignUp} />
+    </AuthStack.Navigator>
+  )
 
   return (
-    <Stack.Navigator initialRouteName='home'>
-      <Stack.Screen name='home' component={Landing} />
-      <Stack.Screen name='about' component={About} />
-    </Stack.Navigator>
+    <>
+      <RootStack.Navigator initialRouteName='home'>
+        <RootStack.Screen name='home' component={Landing} />
+        <RootStack.Screen name='auth' component={AuthScreens} />
+        <RootStack.Group screenOptions={{ headerShown: false }}>
+          <RootStack.Screen name='about' component={About}  />
+        </RootStack.Group>
+      </RootStack.Navigator>
+    </>
   )
 }
 
