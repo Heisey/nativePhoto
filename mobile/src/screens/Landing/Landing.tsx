@@ -3,7 +3,7 @@ import * as React from 'react'
 import * as RN from 'react-native'
 import * as ReactStack from '@react-navigation/stack'
 
-import * as App from 'App'
+import * as Core from 'core'
 import * as Hooks from 'hooks'
 
 export interface LandingProps {
@@ -12,11 +12,11 @@ export interface LandingProps {
 
 
 const Landing: React.FC<LandingProps> = (props) => {
-  const navigation = Hooks.common.useNavigation()
+  const navigation = Hooks.common.useNavigation<ReactStack.StackNavigationProp<Core.I.RootStack>>()
 
   return (
     <RN.View style={styles.container}>
-      <RN.Text>Landing 2</RN.Text>
+      <RN.Text>Landing 5</RN.Text>
       <RN.Button onPress={() => navigation.navigate('about')} title='about' />
         
     </RN.View>

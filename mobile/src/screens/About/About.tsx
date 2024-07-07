@@ -1,11 +1,9 @@
 
 import * as React from 'react'
 import * as RN from 'react-native'
-import * as ReactStack from '@react-navigation/stack'
 
-import * as App from 'App'
 export interface AboutProps {
-  // navigation: ReactStack.StackScreenProps<App.RootStack, 'Home'>
+  
 }
 
 const About: React.FC<AboutProps> = (props) => {

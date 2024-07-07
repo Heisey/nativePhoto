@@ -3,9 +3,5 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": "src",
-    // "paths": {
-    //   "@/*": ["/*"],
-    // }
-    // "baseUrl": "./src/Main.tsx"
   }
 }
