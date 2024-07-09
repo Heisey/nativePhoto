@@ -2,6 +2,7 @@
 import 'react-native-gesture-handler';
 
 import * as React from 'react'
+import * as Native from 'react-native'
 import * as ReactNavigate from '@react-navigation/native'
 
 import App from './App'
@@ -15,7 +16,9 @@ const Main: React.FC = () => {
       <FontProvider>
         <AuthProvider>
           <ReactNavigate.NavigationContainer>
-            <App />
+            <Native.SafeAreaView>
+              <App />
+            </Native.SafeAreaView>
           </ReactNavigate.NavigationContainer>
         </AuthProvider>
       </FontProvider>

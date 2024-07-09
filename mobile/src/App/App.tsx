@@ -1,6 +1,7 @@
 
 import * as React from 'react'
 import * as ReactStack from '@react-navigation/stack'
+import * as Native from 'react-native'
 
 import * as Core from 'core'
 import Landing from 'screens/Landing'
@@ -23,13 +24,15 @@ const App: React.FC<AppProps> = (props) => {
 
   return (
     <>
-      <RootStack.Navigator initialRouteName='home'>
-        <RootStack.Screen name='home' component={Landing} />
-        <RootStack.Screen name='auth' component={AuthScreens} />
-        <RootStack.Group screenOptions={{ headerShown: false }}>
-          <RootStack.Screen name='about' component={About}  />
-        </RootStack.Group>
-      </RootStack.Navigator>
+      {/* <Native.View> */}
+        <RootStack.Navigator initialRouteName='home'>
+          <RootStack.Screen name='home' component={Landing} />
+          <RootStack.Screen name='auth' component={AuthScreens} />
+          <RootStack.Group screenOptions={{ headerShown: false }}>
+            <RootStack.Screen name='about' component={About}  />
+          </RootStack.Group>
+        </RootStack.Navigator>
+      {/* </Native.View> */}
     </>
   )
 }
