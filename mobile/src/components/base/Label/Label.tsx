@@ -22,25 +22,17 @@ const Label: React.FC<LabelProps> = (props) => {
 const styles = Native.StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'row',
-    // backgroundColor: 'blue'
   },
   text: {
     color: 'white',
     marginBottom: 10
-    // backgroundColor: 'green'
   },
   field: {
-    // flex: 1,
-    // height: 16,
     backgroundColor: '#070826',
-    // backgroundColor: 'pink',
     padding: 8,
     borderRadius: 12.5,
     borderColor: 'black',
     borderWidth: 2,
-    
-
   }
 })
 

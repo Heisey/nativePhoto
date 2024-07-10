@@ -21,7 +21,7 @@ const SignIn: React.FC<SignInProps> = (props) => {
 
   const login = async () => {
     try {
-      await auth.loginWithEmail({ email, password })
+      // await auth.loginWithEmail({ email, password })
       navigation.navigate('main', { screen: 'home' })
     } catch(err) {
       Native.Alert.alert(
