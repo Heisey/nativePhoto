@@ -17,15 +17,15 @@ export interface AppProps {}
 const App: React.FC<AppProps> = (props) => {
 
   const AuthScreens = () => (
-    <AuthStack.Navigator initialRouteName='signIn' >
-      <AuthStack.Screen name='signIn' component={SignIn} />
+    <AuthStack.Navigator initialRouteName='signIn' screenOptions={{ headerLeft: () => null, headerTitle: () => null }} >
+      <AuthStack.Screen name='signIn' options={{ headerTitle: 'SignIn'}} component={SignIn} />
       <AuthStack.Screen name='signUp' component={SignUp} />
     </AuthStack.Navigator>
   )
 
   return (
-    <RootStack.Navigator initialRouteName='home' screenOptions={{ headerStyle: styles.primaryHeaderBackground, headerTitleStyle: styles.primaryHeaderText }}>
-      <RootStack.Screen name='home' component={Landing} />
+    <RootStack.Navigator initialRouteName='home' screenOptions={{ headerStyle: styles.primaryHeaderBackground, headerTitle: () => null }}>
+      <RootStack.Screen name='home' component={Landing} options={{ headerShown: false }} />
       <RootStack.Screen name='auth' component={AuthScreens} />
       <RootStack.Group screenOptions={{ headerShown: false }}>
         <RootStack.Screen name='about' component={About}  />
