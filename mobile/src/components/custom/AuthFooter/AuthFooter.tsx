@@ -10,6 +10,8 @@ export interface AuthFooterProps {
   isDisabled: boolean
   login: () => void
   navigate: () => void
+  message: string
+  linkText: string
 }
 
 const AuthFooter: React.FC<AuthFooterProps> = (props) => {
@@ -19,9 +21,9 @@ const AuthFooter: React.FC<AuthFooterProps> = (props) => {
       <Button onPress={props.login} disabled={props.isDisabled}>Login</Button>
       <Native.View style={styles.signUpContainer}>
         <Native.Text style={styles.signUpMessage}>
-          Dont have an account?
+          {props.message}
           <Native.TouchableOpacity style={styles.signUpButton} onPress={props.navigate}>
-            <Native.Text style={styles.signUpLink}>Sign up</Native.Text>
+            <Native.Text style={styles.signUpLink}>{props.linkText}</Native.Text>
           </Native.TouchableOpacity>
         </Native.Text>
       </Native.View>

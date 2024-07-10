@@ -19,13 +19,32 @@ const SignIn: React.FC<SignInProps> = (props) => {
 
   const isDisabled = () => !email || !password
 
-  const login = async () => await auth.loginWithEmail({ email, password })
+  const login = async () => {
+    try {
+      await auth.loginWithEmail({ email, password })
+      navigation.navigate('main', { screen: 'home' })
+    } catch(err) {
+      Native.Alert.alert(
+        'Something went wrong', 
+        'Check you email/password',
+        [
+          {
+            text: 'Okay'
+          }
+        ],
+        {
+          cancelable: false
+        }
+      )
+    }
+  }
 
   const navigate = () => navigation.navigate('auth', { screen: 'signUp' })
   
   return (
     <Native.ScrollView style={styles.container}>
       <AuthHeader title='Sign in to Aora' />
+
       <Native.View style={styles.inputContainer}>
         <Label
           label='email'
@@ -58,6 +77,8 @@ const SignIn: React.FC<SignInProps> = (props) => {
         isDisabled={isDisabled()}
         login={login}
         navigate={navigate}
+        message='Not a member?'
+        linkText='Sign up'
       />
     </Native.ScrollView>
   )

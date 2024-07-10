@@ -76,6 +76,8 @@ const SignUp: React.FC<SignUpProps> = (props) => {
         isDisabled={isDisabled()}
         login={login}
         navigate={navigate}
+        message='Have an account already?'
+        linkText='Sign in'
       />
     </Native.ScrollView>
   )
