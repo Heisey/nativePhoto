@@ -17,7 +17,7 @@ export interface AppProps {}
 const App: React.FC<AppProps> = (props) => {
 
   const AuthScreens = () => (
-    <AuthStack.Navigator initialRouteName='signIn' screenOptions={{ headerLeft: () => null, headerTitle: () => null }} >
+    <AuthStack.Navigator initialRouteName='signIn' screenOptions={{ headerStyle: styles.primaryHeaderBackground, headerLeft: () => null, headerTitle: () => null }} >
       <AuthStack.Screen name='signIn' options={{ headerTitle: 'SignIn'}} component={SignIn} />
       <AuthStack.Screen name='signUp' component={SignUp} />
     </AuthStack.Navigator>

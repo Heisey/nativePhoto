@@ -13,7 +13,7 @@ export interface LandingProps {
 }
 
 const Landing: React.FC<LandingProps> = (props) => {
-  const navigation = Hooks.common.useNavigation<ReactStack.StackNavigationProp<Core.I.RootStack, 'auth'>>()
+  const navigation = Hooks.common.useNavigation()
 
   return (
     <Native.View style={styles.container}>
@@ -47,7 +47,7 @@ const Landing: React.FC<LandingProps> = (props) => {
 
           <Button 
             style={styles.cta}
-            onPress={() => navigation.navigate('auth')}
+            onPress={() => navigation.navigate('auth', { screen: 'signIn' })}
           >
             Continue to Login
           </Button>

@@ -12,9 +12,9 @@ const Button: React.FC<ButtonProps> = (props) => {
     <Native.TouchableOpacity
       { ...props }
       activeOpacity={0.7}
-      style={[styles.container, props.style]}
+      style={[styles.container, props.style, props.disabled && styles.disabled]}
     >
-      <Native.Text style={[styles.text, props.textStyles]}>
+      <Native.Text style={[styles.text, props.textStyles, props.disabled &&  styles.disabledText]}>
         {props.isLoading && 'Loading...'}
         {!props.isLoading && props.children}
       </Native.Text>
@@ -34,6 +34,12 @@ const styles = Native.StyleSheet.create({
   text: {
     color: 'black',
     fontWeight: 'bold'
+  },
+  disabled: {
+    backgroundColor: '#17171f'
+  },
+  disabledText: {
+    color: '#5d5d75'
   }
 })
 
