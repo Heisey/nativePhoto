@@ -6,9 +6,9 @@ export interface SignUpProps {}
 
 const SignUp: React.FC<SignUpProps> = (props) => {
   return (
-    <RN.View style={styles.container}>
+    <RN.SafeAreaView style={styles.container}>
       <RN.Text>SignUp</RN.Text>
-    </RN.View>
+    </RN.SafeAreaView>
   )
 }
 

@@ -9,40 +9,39 @@ import About from 'screens/About'
 import SignIn from 'screens/Auth/SignIn'
 import SignUp from 'screens/Auth/SignUp'
 
+const RootStack = ReactStack.createStackNavigator<Core.I.RootStack>()
+const AuthStack = ReactStack.createStackNavigator<Core.I.AuthStack>()
+
 export interface AppProps {}
 
 const App: React.FC<AppProps> = (props) => {
-  const RootStack = ReactStack.createStackNavigator<Core.I.RootStack>()
-  const AuthStack = ReactStack.createStackNavigator<Core.I.AuthStack>()
 
   const AuthScreens = () => (
-    <AuthStack.Navigator initialRouteName='signIn'>
+    <AuthStack.Navigator initialRouteName='signIn' >
       <AuthStack.Screen name='signIn' component={SignIn} />
       <AuthStack.Screen name='signUp' component={SignUp} />
     </AuthStack.Navigator>
   )
 
   return (
-    <>
-      {/* <Native.View> */}
-        <RootStack.Navigator initialRouteName='home'>
-          <RootStack.Screen name='home' component={Landing} />
-          <RootStack.Screen name='auth' component={AuthScreens} />
-          <RootStack.Group screenOptions={{ headerShown: false }}>
-            <RootStack.Screen name='about' component={About}  />
-          </RootStack.Group>
-        </RootStack.Navigator>
-      {/* </Native.View> */}
-    </>
+    <RootStack.Navigator initialRouteName='home' screenOptions={{ headerStyle: styles.primaryHeaderBackground, headerTitleStyle: styles.primaryHeaderText }}>
+      <RootStack.Screen name='home' component={Landing} />
+      <RootStack.Screen name='auth' component={AuthScreens} />
+      <RootStack.Group screenOptions={{ headerShown: false }}>
+        <RootStack.Screen name='about' component={About}  />
+      </RootStack.Group>
+    </RootStack.Navigator>
   )
 }
 
-// const styles = RN.StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center'
-//   }
-// })
+const styles = Native.StyleSheet.create({
+  container: {
+    // flex: 1,
+    backgroundColor: 'black',
+    color: 'yellow'
+  },
+  primaryHeaderBackground: { backgroundColor: 'black' },
+  primaryHeaderText: { color: 'yellow' }
+})
 
 export default App

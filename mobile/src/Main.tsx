@@ -12,19 +12,24 @@ import FontProvider from 'components/providers/Font'
 const Main: React.FC = () => {
 
   return (
-    <>
+    <Native.SafeAreaView style={styles.container}>
       <FontProvider>
         <AuthProvider>
           <ReactNavigate.NavigationContainer>
-            <Native.SafeAreaView>
-              <App />
-            </Native.SafeAreaView>
+            <App />
           </ReactNavigate.NavigationContainer>
         </AuthProvider>
       </FontProvider>
-    </>
+    </Native.SafeAreaView>
   )
 }
+
+const styles = Native.StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'black'
+  }
+})
 
 
 export default Main
