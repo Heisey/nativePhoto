@@ -1,4 +1,7 @@
 
+/node_modules
+package-lock.json
+
 # Client
 mobile/node_modules/
 
@@ -27,6 +30,7 @@ mobile/.env*.local
 mobile/*.tsbuildinfo
 
 # Client
+client/snippets.md
 client/logs
 client/*.log
 client/npm-debug.log*
@@ -51,7 +55,10 @@ client/*.njsproj
 client/*.sln
 client/*.sw?
 
+# Server
 server/node_modules
 server/package-lock.json
+server/.env
 
+# project files
 project/todos.md
