@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "workspaces": [
+    "server",
+    "mobile",
+    "client",
+    "core" 
+  ],
+  "scripts": {
+    "server": "npm --workspace server run dev",
+    "client": "npm --workspace client run dev",
+    "mobile": "npm --workspace mobile run dev"
+  }
+}
