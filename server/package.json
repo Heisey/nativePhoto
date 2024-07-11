@@ -6,12 +6,12 @@
     "dev": "nodemon"
   },
   "dependencies": {
-    "core": "*", 
     "chalk": "^4.1.2",
+    "core": "*",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "mongodb": "^6.6.1",
-    "mongoose": "^8.3.4"
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

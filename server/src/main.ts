@@ -7,7 +7,8 @@ import express from 'express'
 import helmut from 'helmet'
 import morgan from 'morgan'
 
-import * as Router from './router'
+import * as db from './database'
+import * as router from './router'
 
 const PORT = parseInt(process.env.PORT as string)
 
@@ -19,12 +20,12 @@ app.use(express.json())
 app.use(helmut())
 
 
-app.use('/api/v1/user', Router.user)
+app.use('/api/v1/user', router.user)
 
 const start = async () => {
   app.listen(PORT, () => console.log(`${chalk.blue.bold('Server started on port')} ${chalk.yellowBright.bold(PORT)}`))
 
-  // await db.connection()
+  await db.connection()
 }
 
 start()
