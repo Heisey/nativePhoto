@@ -10,16 +10,16 @@
     "preview": "vite preview"
   },
   "peerDependencies": {
-    "@tanstack/react-query": "^5.51.1"
+    "@tanstack/react-query": "^5.51.1",
+    "react": "^18.3.1",
+    "@types/react": "^18.3.3"
   },
   "dependencies": {
     "api": "*", 
     "core": "*", 
-    "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",

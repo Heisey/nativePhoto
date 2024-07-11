@@ -14,6 +14,10 @@
     "mobile": "npm --workspace mobile run dev"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.51.1"
+    "@tanstack/react-query": "^5.51.1",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3"
   }
 }
