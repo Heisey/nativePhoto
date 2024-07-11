@@ -9,7 +9,11 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.51.1"
+  },
   "dependencies": {
+    "api": "*", 
     "core": "*", 
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

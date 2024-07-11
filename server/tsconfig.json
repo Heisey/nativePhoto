@@ -5,7 +5,7 @@
     "moduleResolution": "node",
     "baseUrl": ".", // Root of the monorepo
     "paths": {
-      "core/*": ["../core/src/*"] // Path to core module
+      "core/*": ["../core/src/*"]
     },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

@@ -29,6 +29,7 @@ mobile/.env*.local
 mobile/*.tsbuildinfo
 
 # Client
+client/snippets.md
 client/logs
 client/*.log
 client/npm-debug.log*

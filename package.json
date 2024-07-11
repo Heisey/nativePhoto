@@ -4,11 +4,15 @@
     "server",
     "mobile",
     "client",
-    "core" 
+    "core",
+    "api"
   ],
   "scripts": {
     "server": "npm --workspace server run dev",
     "client": "npm --workspace client run dev",
     "mobile": "npm --workspace mobile run dev"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.51.1"
   }
 }
