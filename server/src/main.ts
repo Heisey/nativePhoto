@@ -7,10 +7,6 @@ import express from 'express'
 import helmut from 'helmet'
 import morgan from 'morgan'
 
-import * as Core from 'core'
-
-
-
 const PORT = parseInt(process.env.PORT as string)
 
 const app = express()
