@@ -8,6 +8,7 @@
     "api"
   ],
   "scripts": {
+    "postinstall": "node scripts/fixExpoPath.js",
     "server": "npm --workspace server run dev",
     "client": "npm --workspace client run dev",
     "mobile": "npm --workspace mobile run dev"

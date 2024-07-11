@@ -8,18 +8,21 @@ import * as ReactNavigate from '@react-navigation/native'
 import App from './App'
 import AuthProvider from 'components/providers/Auth'
 import FontProvider from 'components/providers/Font'
+import QueryProvider from 'components/providers/Query'
 
 const Main: React.FC = () => {
 
   return (
     <Native.SafeAreaView style={styles.container}>
-      <FontProvider>
-        <AuthProvider>
-          <ReactNavigate.NavigationContainer>
-            <App />
-          </ReactNavigate.NavigationContainer>
-        </AuthProvider>
-      </FontProvider>
+      <QueryProvider>
+        <FontProvider>
+          <AuthProvider>
+            <ReactNavigate.NavigationContainer>
+              <App />
+            </ReactNavigate.NavigationContainer>
+          </AuthProvider>
+        </FontProvider>
+      </QueryProvider>
     </Native.SafeAreaView>
   )
 }
