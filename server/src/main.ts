@@ -1,16 +1,16 @@
 
-require('dotenv').config();
-
 import chalk from 'chalk'
 import cors from 'cors'
 import express from 'express'
 import helmut from 'helmet'
 import morgan from 'morgan'
 
+import config from 'core/src/config/mergedConfig.json'
+
 import * as db from './database'
 import * as router from './router'
 
-const PORT = parseInt(process.env.PORT as string)
+const PORT = config.ports.server
 
 const app = express()
 

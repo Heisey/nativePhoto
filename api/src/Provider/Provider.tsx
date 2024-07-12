@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as Axios from 'axios';
 import * as Core from 'core';
-
+import config from 'core/src/config//mergedConfig.json'
+// import j from 'core/src/config'
 interface AxiosContextType {
   axiosInstance: Axios.AxiosInstance;
 }
@@ -16,7 +17,7 @@ export const Provider: React.FC<ApiProviderProps> = (props) => {
   // Create Axios instance with interceptors
   const axiosInstance = React.useMemo(() => {
     const instance = Axios.default.create({
-      baseURL: Core.config.urls.SERVER,
+      baseURL: config.urls.server,
     });
 
     instance.interceptors.request.use(async (config) => {

@@ -2,6 +2,7 @@
 import * as firebase from 'firebase/app'
 import * as firebaseAuth from 'firebase/auth'
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage'
+import config from 'core/src/config//mergedConfig.json'
 
 // Typescript error fix
 const reactNativePersistence = (firebaseAuth as any).getReactNativePersistence
@@ -15,16 +16,7 @@ const reactNativePersistence = (firebaseAuth as any).getReactNativePersistence
 //   appId: process.env.FIREBASE_APP_ID
 // }
 
-const config = {
-  apiKey: "AIzaSyCpB5mZf8eG0uXV7Rmqe01nNeDfubePUXM",
-  authDomain: "nousimage-e4d1e.firebaseapp.com",
-  projectId: "nousimage-e4d1e",
-  storageBucket: "nousimage-e4d1e.appspot.com",
-  messagingSenderId: "495434832335",
-  appId: "1:495434832335:web:b14d8f80e70cfaa43a9aba"
-}
-
-const instance = firebase.initializeApp(config)
+const instance = firebase.initializeApp(config.firebase.mobile)
 
 // const clearStorage = async () => {
 //   try {

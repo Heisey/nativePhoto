@@ -5,6 +5,10 @@ package-lock.json
 # Api
 api/.env
 
+# Core
+core/src/config/*firebase*.json
+core/src/config/mergedConfig.json
+
 # Mobile
 mobile/.env
 mobile/node_modules/

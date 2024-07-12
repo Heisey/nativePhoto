@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
+import config from 'core/src/config/mergedConfig.json'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -11,6 +13,6 @@ export default defineConfig({
     }
   },
   server: {
-    port: 3000
+    port: config.ports.client
   }
 })
