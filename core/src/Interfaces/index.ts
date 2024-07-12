@@ -10,3 +10,7 @@ export type { AuthStack, RootStack, MainStack } from './Stacks'
 export type { UserInfo } from './UserInfo'
 
 export type { UserRecord } from './UserRecord'
+
+export type { VideoInfo } from './VideoInfo'
+
+export type { VideoRecord } from './VideoRecord'

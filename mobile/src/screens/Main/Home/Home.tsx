@@ -2,12 +2,23 @@
 import * as React from 'react'
 import * as Native from 'react-native'
 
+import * as Api from 'api'
+
 import * as Assets from 'assets'
+import * as Hooks from 'hooks'
+import Loading from 'components/custom/Loading'
 import SearchBar from 'components/custom/SearchBar'
+import VideoList from 'components/custom/VideoList'
 
 export interface HomeProps {}
 
 const Home: React.FC<HomeProps> = (props) => {
+  const auth = Hooks.common.useAuth()
+  const user = Api.user.useGetByEmail(auth.user?.email)
+
+  if (auth.isLoading || user.isLoading) return <Loading />
+
+  console.log('puppy user, ', auth.user?.email, user.data?.records?.username)
   return (
     <Native.SafeAreaView style={styles.container}>
       <Native.View style={styles.innerContainer}>
@@ -15,7 +26,7 @@ const Home: React.FC<HomeProps> = (props) => {
           <Native.View style={styles.header}>
             <Native.View>
               <Native.Text style={[styles.headerTextSmall]}>Welcome back</Native.Text>
-              <Native.Text style={[styles.headerTextLarge]}>Archie Puppy</Native.Text>
+              <Native.Text style={[styles.headerTextLarge]}>{user.data?.records?.username}</Native.Text>
             </Native.View>
             <Native.Image 
               source={Assets.images.logoSmall}
@@ -27,12 +38,14 @@ const Home: React.FC<HomeProps> = (props) => {
         <SearchBar style={styles.search} />
 
         <Native.View>
-          <Native.FlatList
-            data={[{ id: 1 }, { id: 2 }, { id: 3 }]}
-            keyExtractor={(dataSet) => `${dataSet.id}`}
-            renderItem={dataSet => (
-              <Native.Text style={styles.headerTextLarge}>{dataSet.item.id}</Native.Text>
-            )}
+          <VideoList 
+            headerList={
+              <Native.View>
+                <VideoList 
+                  horizontal
+                />
+              </Native.View>
+            }
           />
         </Native.View>
 
@@ -55,13 +68,13 @@ const styles = Native.StyleSheet.create({
     alignItems: 'flex-end',
     marginBottom: 15
   },
-  headerTextSmall: {
-    color: 'lightgrey',
-    fontSize: 18
-  },
   headerTextLarge: {
     color: 'white',
     fontSize: 28
+  },
+  headerTextSmall: {
+    color: 'lightgrey',
+    fontSize: 18
   },
   logo: {
     height: 40

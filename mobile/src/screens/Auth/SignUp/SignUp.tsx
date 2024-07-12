@@ -28,23 +28,11 @@ const SignUp: React.FC<SignUpProps> = (props) => {
   const isDisabled = () => !username || !email || !password
 
   const login = async () => {
-    try {
-      await auth.createUser({ email, password, username })
-      navigation.navigate('main', { screen: 'home' })
-    } catch (err) {
-      Native.Alert.alert(
-        'Something went wrong', 
-        '',
-        [
-          {
-            text: 'Okay'
-          }
-        ],
-        {
-          cancelable: false
-        }
-      )
-    }
+    const userRec = await auth.createUser({ email, password, username })
+    
+    if (!userRec?.id) return Native.Alert.alert('Something went wrong', '', [{ text: 'Okay' }],{ cancelable: false})
+    
+    navigation.navigate('main', { screen: 'home' })
   }
 
   const navigateToSignIn = () => navigation.navigate('auth', { screen: 'signIn' })

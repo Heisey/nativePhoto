@@ -20,6 +20,8 @@ export const Provider: React.FC<ApiProviderProps> = (props) => {
       baseURL: config.urls.server,
     });
 
+    console.log('puppy  axios, ', config.urls.server)
+
     instance.interceptors.request.use(async (config) => {
       if (!props.firebaseAuthInstance.currentUser) {
         delete config.headers.Authorization;
