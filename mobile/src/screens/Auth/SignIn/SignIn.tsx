@@ -14,14 +14,14 @@ export interface SignInProps {}
 const SignIn: React.FC<SignInProps> = (props) => {
   const auth = Hooks.common.useAuth()
   const navigation = Hooks.common.useNavigation()
-  const [email, emailHandler] = React.useState('')
-  const [password, passwordHandler] = React.useState('')
+  const [email, emailHandler] = React.useState('puppy4@test.com')
+  const [password, passwordHandler] = React.useState('Puppy1234')
 
   const isDisabled = () => !email || !password
 
   const login = async () => {
     try {
-      // await auth.loginWithEmail({ email, password })
+      await auth.loginWithEmail({ email, password })
       navigation.navigate('main', { screen: 'home' })
     } catch(err) {
       Native.Alert.alert(

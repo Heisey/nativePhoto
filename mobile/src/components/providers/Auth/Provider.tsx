@@ -18,10 +18,11 @@ const Provider: React.FC<React.PropsWithChildren> = (props) => {
 
   const createUser = async (args: Omit<Core.I.Credential, 'firebaseId'> & Pick<Core.I.UserInfo, 'username'>) => {
     const firebaseRes = await firebaseAuth.createUserWithEmailAndPassword(Services.firebase.auth, args.email, args.password)
+
     if (!firebaseRes.user.uid) throw new Error('Firebase create error')
-      console.log('server start', args)
-    const serverRes = await createUserApi.mutateAsync({ ...args, firebaseId: firebaseRes.user.uid })
-    console.log('server res, ', serverRes)
+
+      const serverRes = await createUserApi.mutateAsync({ ...args, firebaseId: firebaseRes.user.uid })
+
     if (!serverRes?.records?.id) {
       firebaseAuth.deleteUser(firebaseRes.user)
       throw new Error('Server Create Error')
