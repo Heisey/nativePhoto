@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "nodemon"
   },
+  "peerDependencies": {
+    "dotenv": "^16.4.5"
+  },
   "dependencies": {
     "chalk": "^4.1.2",
     "core": "*",
@@ -21,7 +24,6 @@
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.12.11",
     "@types/stripe": "^8.0.417",
-    "dotenv": "^16.4.5",
     "helmet": "^7.1.0",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.0",

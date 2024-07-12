@@ -2,7 +2,10 @@
 /node_modules
 package-lock.json
 
-# Client
+# Api
+api/.env
+
+# Mobile
 mobile/.env
 mobile/node_modules/
 

@@ -2,9 +2,9 @@
 import * as Utils from '../utilities'
 
 export const create = Utils.catchAsync(async (req, res, next) => {
-
+  console.log('puppy body, ', req.body)
   res.json({
-    records: 'puppies'
+    records: req.body
   })
 })
 

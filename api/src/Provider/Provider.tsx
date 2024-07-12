@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import * as Axios from 'axios';
 import * as Core from 'core';
@@ -10,15 +9,12 @@ interface AxiosContextType {
 const AxiosContext = React.createContext<AxiosContextType | undefined>(undefined);
 
 export interface ApiProviderProps extends React.PropsWithChildren {
-  firebaseAuthInstance: any
+  firebaseAuthInstance: any;
 }
 
 export const Provider: React.FC<ApiProviderProps> = (props) => {
-  const [axiosInstance, setAxiosInstance] = React.useState<Axios.AxiosInstance>(Axios.default.create({
-    baseURL: Core.config.urls.SERVER,
-  }));
-
-  React.useEffect(() => {
+  // Create Axios instance with interceptors
+  const axiosInstance = React.useMemo(() => {
     const instance = Axios.default.create({
       baseURL: Core.config.urls.SERVER,
     });
@@ -34,7 +30,7 @@ export const Provider: React.FC<ApiProviderProps> = (props) => {
       return config;
     });
 
-    setAxiosInstance(instance);
+    return instance;
   }, [props.firebaseAuthInstance]);
 
   const contextValue = React.useMemo(() => ({ axiosInstance }), [axiosInstance]);
@@ -49,7 +45,7 @@ export const Provider: React.FC<ApiProviderProps> = (props) => {
 export const useAxios = () => {
   const context = React.useContext(AxiosContext);
   if (!context) {
-    throw new Error('useApi must be used within an ApiProvider');
+    throw new Error('useAxios must be used within an ApiProvider');
   }
   return context.axiosInstance;
 };

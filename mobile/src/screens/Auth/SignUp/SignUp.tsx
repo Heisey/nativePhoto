@@ -12,9 +12,9 @@ export interface SignUpProps {}
 const SignUp: React.FC<SignUpProps> = (props) => {
   const auth = Hooks.common.useAuth()
   const navigation = Hooks.common.useNavigation()
-  const [username, usernameHandler] = React.useState('')
-  const [email, emailHandler] = React.useState('')
-  const [password, passwordHandler] = React.useState('')
+  const [username, usernameHandler] = React.useState('test')
+  const [email, emailHandler] = React.useState('puppy4@test.com')
+  const [password, passwordHandler] = React.useState('Puppy1234')
 
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('beforeRemove', (e) => {
@@ -29,7 +29,7 @@ const SignUp: React.FC<SignUpProps> = (props) => {
 
   const login = async () => {
     try {
-      auth.createUser({ email, password, username })
+      await auth.createUser({ email, password, username })
       navigation.navigate('main', { screen: 'home' })
     } catch (err) {
       Native.Alert.alert(
