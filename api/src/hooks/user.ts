@@ -17,11 +17,12 @@ export const useCreateUser = () => {
   }) 
 }
 
-export const useGet = () => {
+export const useGet = (args?: string) => {
   const userApi = Api.useUser()
 
   return Query.useQuery({
     queryKey: ['user'],
-    queryFn: userApi.get
+    queryFn: () => userApi.get(args!),
+    enabled: !!args
   })
 }

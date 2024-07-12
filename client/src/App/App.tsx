@@ -3,6 +3,8 @@ import * as React from 'react'
 
 import * as ApiHooks from 'api'
 
+import * as Services from '@/Services'
+
 export interface AppProps extends React.PropsWithChildren {
 
 }
@@ -13,8 +15,7 @@ const App: React.FC<AppProps> = (props) => {
 
 
   const fetch = async () => {
-    console.log('fetch')
-    const res = await createUser.mutateAsync({ email: 'puppy', password: '123', username: 'woof' })
+    const res = await createUser.mutateAsync({ email: 'puppy', password: '123', username: 'woof', firebaseId: Services.firebase.auth.currentUser?.uid || '' })
 
     console.log('puppy res, ', res)
   }
