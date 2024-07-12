@@ -16,11 +16,11 @@ const Provider: React.FC<React.PropsWithChildren> = (props) => {
   const [user, userHandler] = React.useState<firebaseAuth.User | undefined>(undefined)
   const [isLoading, isLoadingHandler] = React.useState(true);
 
-  const createUser = async (args: Core.I.Credential & Pick<Core.I.UserInfo, 'username'>) => {
+  const createUser = async (args: Omit<Core.I.Credential, 'firebaseId'> & Pick<Core.I.UserInfo, 'username'>) => {
     const firebaseRes = await firebaseAuth.createUserWithEmailAndPassword(Services.firebase.auth, args.email, args.password)
     if (!firebaseRes.user.uid) throw new Error('Firebase create error')
-      console.log('server start')
-    const serverRes = await createUserApi.mutateAsync(args)
+      console.log('server start', args)
+    const serverRes = await createUserApi.mutateAsync({ ...args, firebaseId: firebaseRes.user.uid })
     console.log('server res, ', serverRes)
     if (!serverRes?.records?.id) {
       firebaseAuth.deleteUser(firebaseRes.user)
@@ -35,7 +35,7 @@ const Provider: React.FC<React.PropsWithChildren> = (props) => {
   };
 
 
-  const loginWithEmail = async (args: Core.I.Credential) => await firebaseAuth.signInWithEmailAndPassword(Services.firebase.auth, args.email, args.password )
+  const loginWithEmail = async (args: Omit<Core.I.Credential, 'firebaseId'>) => await firebaseAuth.signInWithEmailAndPassword(Services.firebase.auth, args.email, args.password )
 
   React.useEffect(() => {
     const unsubscribe = firebaseAuth.onAuthStateChanged(Services.firebase.auth, async (currentUser) => {

@@ -6,8 +6,8 @@ import * as Core from 'core'
 
 interface AuthContext {
   isLoading: boolean
-  createUser: (args: Core.I.Credential & Pick<Core.I.UserInfo, 'username'>) => void
-  loginWithEmail: (args: { email: string, password: string }) => void
+  createUser: (args: Omit<Core.I.Credential, 'firebaseId'> & Pick<Core.I.UserInfo, 'username'>) => void
+  loginWithEmail: (args: Omit<Core.I.Credential, 'firebaseId'>) => void
   logOut: () => void
   user?: firebaseAuth.User
 }
