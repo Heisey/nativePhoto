@@ -1,5 +1,5 @@
 
-# Fullstack project for a online food ordering app
+# Monorepo project for a Media App (Name comming soon)
 
 This project was created to learn react native, but i went way beyond:
 - learned react native
