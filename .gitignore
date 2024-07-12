@@ -3,6 +3,7 @@
 package-lock.json
 
 # Client
+mobile/.env
 mobile/node_modules/
 
 mobile/.expo/
@@ -30,6 +31,7 @@ mobile/.env*.local
 mobile/*.tsbuildinfo
 
 # Client
+client/.env
 client/snippets.md
 client/logs
 client/*.log

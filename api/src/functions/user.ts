@@ -1,7 +1,14 @@
 
 import * as Core from 'core'
-import * as Utils from '../utilities'
 
-export const create = async (args: Core.I.Credential) => (await Utils.server.makeRequest.post<Core.I.ServerRequest<Core.I.UserRecord>>(`/user`, args)).data.records
+import * as Provider from '../Provider'
 
-export const get = async () => (await Utils.server.makeRequest.get<Core.I.ServerRequest<string>>('/user',)).data.records
+export const create = async (args: Core.I.Credential & Pick<Core.I.UserInfo, 'username'>) => {
+  const instance = Provider.useAxios()
+  return (await instance.post<Core.I.ServerRequest<Core.I.UserRecord>>(`/user`, args)).data
+}
+
+export const get = async () => {
+  const instance = Provider.useAxios()
+  return (await instance.get<Core.I.ServerRequest<Core.I.UserRecord>>('/user',)).data.records
+}

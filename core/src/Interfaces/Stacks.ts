@@ -1,6 +1,7 @@
 
+// Project Only:mobile
+
 import * as NativeRouter from '@react-navigation/native'
-import * as ReactStack from '@react-navigation/stack'
 
 export type RootStack = {
   landing: undefined,

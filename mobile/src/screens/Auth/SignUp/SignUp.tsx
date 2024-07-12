@@ -27,11 +27,27 @@ const SignUp: React.FC<SignUpProps> = (props) => {
 
   const isDisabled = () => !username || !email || !password
 
-  const login = () => {
-    auth.signUpWithEmail({ email, password })
+  const login = async () => {
+    try {
+      auth.createUser({ email, password, username })
+      navigation.navigate('main', { screen: 'home' })
+    } catch (err) {
+      Native.Alert.alert(
+        'Something went wrong', 
+        '',
+        [
+          {
+            text: 'Okay'
+          }
+        ],
+        {
+          cancelable: false
+        }
+      )
+    }
   }
 
-  const navigate = () => navigation.navigate('auth', { screen: 'signIn' })
+  const navigateToSignIn = () => navigation.navigate('auth', { screen: 'signIn' })
   
   return (
     <Native.ScrollView style={styles.container}>
@@ -75,7 +91,7 @@ const SignUp: React.FC<SignUpProps> = (props) => {
       <AuthFooter 
         isDisabled={isDisabled()}
         login={login}
-        navigate={navigate}
+        navigate={navigateToSignIn}
         message='Have an account already?'
         linkText='Sign in'
       />

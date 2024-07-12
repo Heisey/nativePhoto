@@ -10,7 +10,7 @@ export const useCreateUser = () => {
     mutationFn: Api.user.create,
     onSuccess: (args) => {
       client.invalidateQueries({
-        queryKey: ['user', args?.email]
+        queryKey: ['user', args?.records?.email]
       })
     }
   }) 

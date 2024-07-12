@@ -3,9 +3,6 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": "src",
-    // "paths": {
-    //   "*": ["typescript/*"]
-    // }
   },
   "include": [
     "src/**/*.ts",

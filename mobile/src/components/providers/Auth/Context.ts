@@ -2,10 +2,11 @@
 import * as React from 'react'
 import * as firebaseAuth from 'firebase/auth'
 
+import * as Core from 'core'
+
 interface AuthContext {
   isLoading: boolean
-  signUpWithEmail: (args: { email: string, password: string }) => void
-  loginWithGoogle: () => void
+  createUser: (args: Core.I.Credential & Pick<Core.I.UserInfo, 'username'>) => void
   loginWithEmail: (args: { email: string, password: string }) => void
   logOut: () => void
   user?: firebaseAuth.User
