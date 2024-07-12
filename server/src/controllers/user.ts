@@ -3,7 +3,6 @@ import * as Models from '../models'
 import * as Utils from '../utilities'
 
 export const create = Utils.catchAsync(async (req, res, next) => {
-  console.log('create start', req.body)
   if (!req.body.firebaseId) return res.status(500).json({ status: 'failed', err: 'server timming' })
 
   const existing = await Models.User.findOne({ auth0Id: req.body.auth0id })
@@ -12,7 +11,6 @@ export const create = Utils.catchAsync(async (req, res, next) => {
 
   const records = await new Models.User({ ...req.body }).save()
 
-  console.log('puppy server records, ', records)
   res.status(201).json({ records })
 })
 

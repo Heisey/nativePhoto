@@ -8,6 +8,7 @@ const urlsFilePath = path.join(configDir, 'urls.json');
 const portsFilePath = path.join(configDir, 'ports.json');
 const mobileFirebaseFilePath = path.join(configDir, 'mobile.firebase.json');
 const clientFirebaseFilePath = path.join(configDir, 'client.firebase.json');
+const serverFirebaseFilePath = path.join(configDir, 'server.firebase.json');
 
 const readJsonFile = (filePath) => {
   if (fs.existsSync(filePath)) {
@@ -22,7 +23,8 @@ const mergedConfig = {
   ports: readJsonFile(portsFilePath),
   firebase: {
     mobile: readJsonFile(mobileFirebaseFilePath),
-    client: readJsonFile(clientFirebaseFilePath)
+    client: readJsonFile(clientFirebaseFilePath),
+    server: readJsonFile(serverFirebaseFilePath)
   }
 };
 
