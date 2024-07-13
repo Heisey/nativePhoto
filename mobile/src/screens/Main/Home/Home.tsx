@@ -38,9 +38,11 @@ const Home: React.FC<HomeProps> = (props) => {
 
         <Native.View>
           <VideoList 
+            data={[{ id: '1' }, { id: '2' }, { id: '3' }]}
             headerList={
               <Native.View>
                 <VideoList 
+                  data={[{ id: '1' }, { id: '2' }, { id: '3' }]}
                   horizontal
                 />
               </Native.View>
