@@ -18,6 +18,6 @@ export const getByEmail = Utils.catchAsync(async (req, res, next) => {
   const records = await Models.User.findOne({ email: req.params.email })
 
   if (!records) return res.status(404).json({ message: 'Could not find record' })
-  
+    
   res.status(200).json({ records })
 })

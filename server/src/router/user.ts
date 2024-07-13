@@ -7,6 +7,6 @@ import * as Middleware from '../middleware'
 const router = express.Router()
 
 router.post('/', Middleware.checkToken, Controllers.user.create)
-router.get('/', Controllers.user.getByEmail)
+router.get('/:email', Controllers.user.getByEmail)
 
 export default router

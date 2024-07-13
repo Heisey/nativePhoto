@@ -18,7 +18,6 @@ const Home: React.FC<HomeProps> = (props) => {
 
   if (auth.isLoading || user.isLoading) return <Loading />
 
-  console.log('puppy user, ', auth.user?.email, user.data?.records?.username)
   return (
     <Native.SafeAreaView style={styles.container}>
       <Native.View style={styles.innerContainer}>

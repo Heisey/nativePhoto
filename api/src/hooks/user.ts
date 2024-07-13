@@ -9,10 +9,7 @@ export const useCreateUser = () => {
   const userApi = Api.useUser()
   
   return Query.useMutation({
-    mutationFn: (args: Core.I.Credential & Pick<Core.I.UserInfo, 'username'>) => {
-      console.log('puppies create', args)
-      return userApi.create(args)
-    },
+    mutationFn: userApi.create,
     onSuccess: (args) => {
       client.invalidateQueries({
         queryKey: ['user', args?.records?.email]
@@ -23,7 +20,7 @@ export const useCreateUser = () => {
 
 export const useGetByEmail = (args?: string | null) => {
   const userApi = Api.useUser()
-
+  
   return Query.useQuery({
     queryKey: ['user', args],
     queryFn: () => userApi.getByEmail(args!),

@@ -19,6 +19,10 @@ const UserSchema = new mongoose.Schema<Core.I.UserRecord>({
     type: String,
     required: true,
     unique: true
+  },
+  username: {
+    type: String,
+    required: true
   }
 }, {
   timestamps: true

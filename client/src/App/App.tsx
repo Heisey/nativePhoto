@@ -14,11 +14,7 @@ const App: React.FC<AppProps> = (props) => {
   const createUser = ApiHooks.user.useCreateUser()
 
 
-  const fetch = async () => {
-    const res = await createUser.mutateAsync({ email: 'puppy', password: '123', username: 'woof', firebaseId: Services.firebase.auth.currentUser?.uid || '' })
-
-    console.log('puppy res, ', res)
-  }
+  const fetch = async () => await createUser.mutateAsync({ email: 'puppy', password: '123', username: 'woof', firebaseId: Services.firebase.auth.currentUser?.uid || '' })
 
   return (
     <div>
