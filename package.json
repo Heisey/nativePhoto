@@ -11,7 +11,8 @@
     "postinstall": "node scripts/fixExpoPath.js && node scripts/mergeConfig.js",
     "server": "npm --workspace server run dev",
     "client": "npm --workspace client run dev",
-    "mobile": "npm --workspace mobile run dev"
+    "mobile": "npm --workspace mobile run dev",
+    "seed_db": "npm --workspace server run seed_db"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.1",

@@ -20,7 +20,7 @@ app.use(express.json())
 app.use(helmut())
 
 
-app.use('/api/v1/user', router.user)
+app.use('/api/v1/user', router.base)
 
 const start = async () => {
   app.listen(PORT, () => console.log(`${chalk.blue.bold('Server started on port')} ${chalk.yellowBright.bold(PORT)}`))

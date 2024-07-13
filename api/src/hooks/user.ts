@@ -2,7 +2,6 @@
 import * as Query from '@tanstack/react-query'
 
 import * as Api from '../functions'
-import * as Core from 'core'
 
 export const useCreateUser = () => {
   const client = Query.useQueryClient()

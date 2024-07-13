@@ -5,7 +5,7 @@ import * as Utils from '../utilities'
 export const create = Utils.catchAsync(async (req, res, next) => {
   if (!req.body.firebaseId) return res.status(500).json({ status: 'failed', err: 'server timming' })
 
-  const existing = await Models.User.findOne({ auth0Id: req.body.firebaseId })
+  const existing = await Models.User.findOne({ firebaseId: req.body.firebaseId })
 
   if (existing) return res.status(500).json({ status: 'failed', err: 'user already exists'})
 
