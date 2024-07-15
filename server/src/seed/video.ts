@@ -15,4 +15,3 @@ export const createVideo = async (id: mongoose.Types.ObjectId) => {
 
   return record
 }
-

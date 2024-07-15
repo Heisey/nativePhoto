@@ -4,4 +4,5 @@ export interface VideoInfo {
   videoUrl: string
   title: string
   creatorId: string
+  creatorName: string
 }

@@ -3,7 +3,8 @@ import mongoose from 'mongoose'
 
 import * as Core from 'core'
 
-interface VideoSchema extends Omit<Core.I.VideoInfo, 'creatorId'> {
+
+interface VideoSchema extends mongoose.Document, Omit<Core.I.VideoInfo, 'creatorId'> {
   creatorId: mongoose.Types.ObjectId
 }
 
