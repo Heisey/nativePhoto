@@ -1,6 +1,7 @@
 
 import * as React from 'react'
 import * as Native from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 import * as Core from 'core'
 
@@ -21,9 +22,17 @@ const VideoList: React.FC<VideoListProps> = (props) => {
         resizeMode='contain'
         style={styles.itemImage}
       />
-      <Native.View>
-        <Native.Text style={styles.itemTitle} numberOfLines={1} ellipsizeMode='tail'>{args.title}</Native.Text>
-        <Native.Text style={styles.itemCreator}>{args.creatorName}</Native.Text>
+      <Native.View style={styles.itemFooter}>
+        <Native.Image
+          style={styles.itemAvatar}
+          src={args.creatorAvatar}
+          resizeMode='contain'
+        />
+        <Native.View style={styles.itemTextContainer} >
+          <Native.Text style={styles.itemTitle} numberOfLines={1} ellipsizeMode='tail'>{args.title}</Native.Text>
+          <Native.Text style={styles.itemCreator}>{args.creatorName}</Native.Text>
+        </Native.View>
+        <Icon name='ellipsis-vertical' style={styles.menu} color='white' size={30} />
       </Native.View>
     </Native.View>
   )
@@ -51,22 +60,41 @@ const styles = Native.StyleSheet.create({
   },
 
   item: {
-    flexDirection: 'row',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    marginBottom: 15
   },
   itemImage: {
-    height: 80,
-    width: 65,
-    marginRight: 10
+    height: 200,
+    width: '100%'
   },
   itemTitle: {
     paddingTop: 5,
     color: 'white',
     fontSize: 22
   },
+  itemAvatar: {
+    height: 60,
+    width: 60,
+    marginRight: 10,
+    borderRadius: 30
+  },
+  itemFooter: {
+    padding: 0,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    backgroundColor: '#04063d',
+    width: '100%'
+  },
   itemCreator: {
     color: 'lightgrey',
     fontSize: 18
+  },
+  itemTextContainer: {
+    width: Native.Dimensions.get('window').width - 120
+  },
+  menu: {
+    // fi: 'white'
+    marginTop: 15
   }
 })
 

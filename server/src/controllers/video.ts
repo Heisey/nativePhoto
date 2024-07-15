@@ -26,8 +26,8 @@ export const get = Utils.catchAsync(async (req, res, next) => {
 
   if (req.query.creatorName) aggregate.push({ $match: { 'creator.username': { $regex: req.query.creatorName, $options: 'i' }}})
 
-  aggregate.push({ $project: { _id: 1, thumbnail: 1, videoUrl: 1, title: 1,  creatorName: '$creator.username'} })
-  aggregate.push({ $limit: 10 })
+  aggregate.push({ $project: {  id: '$_id', _id: 0, thumbnail: 1, videoUrl: 1, title: 1,  creatorName: '$creator.username', creatorAvatar: '$creator.avatar' } })
+  aggregate.push({ $limit: 20 })
 
   const records = await Models.Video.aggregate(aggregate)
 

@@ -5,4 +5,5 @@ export interface VideoInfo {
   title: string
   creatorId: string
   creatorName: string
+  creatorAvatar: string
 }

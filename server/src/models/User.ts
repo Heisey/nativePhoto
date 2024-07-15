@@ -23,6 +23,9 @@ const UserSchema = new mongoose.Schema<Core.I.UserRecord>({
   username: {
     type: String,
     required: true
+  },
+  avatar: {
+    type: String
   }
 }, {
   timestamps: true

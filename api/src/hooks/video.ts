@@ -13,11 +13,11 @@ export const useCreate = () => {
   })
 }
 
-export const useGet = (args: Pick<Core.I.VideoInfo, 'creatorId' | 'title'>) => {
+export const useGet = (args?: Partial<Pick<Core.I.VideoInfo, 'creatorId' | 'title'>>) => {
   const videoApi = Api.useVideo()
-
+  const params = args ? Object.values(args!) : []
   return Query.useQuery({
     queryFn: () => videoApi.get(args),
-    queryKey: ['video', ...Object.values(args)]
+    queryKey: ['video', ...params]
   })
 }

@@ -20,7 +20,8 @@ const generateUserData = (args: GenerateUserData): NewUser => ({
   firstName: faker.person.firstName(),
   lastName: faker.person.lastName(),
   username: faker.internet.userName(),
-  password: args.password
+  password: args.password,
+  avatar: faker.image.urlPicsumPhotos()
 })
 
 export const createUser = async () => {

@@ -13,7 +13,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
     <Native.View style={[styles.container, props.style]}>
       <Native.TextInput 
         placeholder='search'
-        placeholderTextColor='white'
+        placeholderTextColor='lightgrey'
         style={styles.input}
         value={props.title}
         onChangeText={props.onChangeTitle}
@@ -31,7 +31,8 @@ const styles = Native.StyleSheet.create({
     borderWidth: 2
   },
   input: {
-    fontSize: 18
+    fontSize: 18,
+    color: 'white'
   }
 })
 
