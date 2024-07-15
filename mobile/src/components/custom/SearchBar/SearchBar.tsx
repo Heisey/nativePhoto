@@ -4,6 +4,8 @@ import * as Native from 'react-native'
 
 export interface SearchBarProps {
   style?: Native.StyleProp<Native.ViewStyle>
+  title: string
+  onChangeTitle: (args: string) => void
 }
 
 const SearchBar: React.FC<SearchBarProps> = (props) => {
@@ -13,6 +15,8 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         placeholder='search'
         placeholderTextColor='white'
         style={styles.input}
+        value={props.title}
+        onChangeText={props.onChangeTitle}
       />
     </Native.View>
   )

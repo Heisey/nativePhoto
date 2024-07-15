@@ -16,8 +16,13 @@ const Home: React.FC<HomeProps> = (props) => {
   const auth = Hooks.common.useAuth()
   const user = Api.user.useGetByEmail(auth.user?.email)
 
-  if (auth.isLoading || user.isLoading) return <Loading />
+  const [title, titleHandler] = React.useState('')
 
+  const videos = Api.video.useGet({ title })
+
+  if (auth.isLoading || user.isLoading || videos.isLoading) return <Loading />
+
+  console.log('videos, ', videos.data)
   return (
     <Native.SafeAreaView style={styles.container}>
       <Native.View style={styles.innerContainer}>
@@ -34,15 +39,15 @@ const Home: React.FC<HomeProps> = (props) => {
             />
           </Native.View>
         </Native.View>
-        <SearchBar style={styles.search} />
+        <SearchBar title={title} onChangeTitle={titleHandler} style={styles.search} />
 
         <Native.View>
           <VideoList 
-            data={[{ id: '1' }, { id: '2' }, { id: '3' }]}
+            data={videos.data?.data.records}
             headerList={
               <Native.View>
                 <VideoList 
-                  data={[{ id: '1' }, { id: '2' }, { id: '3' }]}
+                  data={videos.data?.data.records}
                   horizontal
                 />
               </Native.View>
