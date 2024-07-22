@@ -18,6 +18,15 @@ export const useGet = (args?: Partial<Pick<Core.I.VideoInfo, 'creatorId' | 'titl
   const params = args ? Object.values(args!) : []
   return Query.useQuery({
     queryFn: () => videoApi.get(args),
-    queryKey: ['video', ...params]
+    queryKey: ['video', 'search', ...params]
+  })
+}
+
+export const useGetById = (args?: Pick<Core.I.VideoRecord, 'id'>) => {
+  const videoApi = Api.useVideo()
+  return Query.useQuery({
+    queryFn: () => videoApi.getById(args!),
+    queryKey: ['video', args],
+    enabled: !!args
   })
 }

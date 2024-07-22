@@ -12,4 +12,6 @@ router.post('/', Controllers.video.create)
 
 router.get('/', Controllers.video.get)
 
+router.get('/:id', Controllers.video.getById)
+
 export default router

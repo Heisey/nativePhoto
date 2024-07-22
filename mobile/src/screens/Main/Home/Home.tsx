@@ -20,6 +20,7 @@ const Home: React.FC<HomeProps> = (props) => {
   const user = Api.user.useGetByEmail(auth.user?.email)
   const [title, titleHandler] = React.useState('')
   const videos = Api.video.useGet({ title })
+  const [selectedVideo, selectedVideoHandler] = React.useState<Core.I.VideoRecord | undefined>(undefined)
 
   if (auth.isLoading || user.isLoading) return <Loading />
 
@@ -46,9 +47,9 @@ const Home: React.FC<HomeProps> = (props) => {
         <Header user={user.data?.records} />
         <SearchBar title={title} onChangeTitle={titleHandler} style={styles.search} />
         {videos.isLoading && <Loading />}
-        {!videos.isLoading && <List mainVideos={videos.data?.data.records} highlightVideos={videos.data?.data.records} />}
+        {!videos.isLoading && <List onSelectVideo={selectedVideoHandler} mainVideos={videos.data?.data.records} highlightVideos={videos.data?.data.records} />}
       </Native.View>
-      {renderVideoPlayer()}
+      {selectedVideo && renderVideoPlayer(selectedVideo)}
     </Native.SafeAreaView>
   )
 }

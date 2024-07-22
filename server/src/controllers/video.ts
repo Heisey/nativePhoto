@@ -35,3 +35,11 @@ export const get = Utils.catchAsync(async (req, res, next) => {
     records
   })
 })
+
+export const getById = Utils.catchAsync(async (req, res, next) => {
+  const records = await Models.Video.findById(req.params.title)
+
+  if (!records) return res.status(404).json({ status: 'failed', err: 'could not find record' })
+  
+  res.status(200).json({ records })
+})

@@ -11,12 +11,14 @@ export interface VideoListProps {
   horizontal?: boolean
   headerList?: React.ReactElement
   data?: Core.I.VideoRecord[]
+  onPressVideo: (args: Core.I.VideoRecord) => void
 }
 
 const VideoList: React.FC<VideoListProps> = (props) => {
 
+
   const Item = (args: Core.I.VideoRecord) => (
-    <Native.View style={styles.item}>
+    <Native.TouchableOpacity style={styles.item}  onPress={() => props.onPressVideo(args)}>
       <Native.Image
         src={args.thumbnail}
         resizeMode='contain'
@@ -34,7 +36,7 @@ const VideoList: React.FC<VideoListProps> = (props) => {
         </Native.View>
         <Icon name='ellipsis-vertical' style={styles.menu} color='white' size={30} />
       </Native.View>
-    </Native.View>
+    </Native.TouchableOpacity>
   )
   return (
     <Native.FlatList 
@@ -53,6 +55,7 @@ const VideoList: React.FC<VideoListProps> = (props) => {
   )
 }
 
+// const onPress = () => props.onPress(props.data!)
 const styles = Native.StyleSheet.create({
   headerTextLarge: {
     color: 'white',

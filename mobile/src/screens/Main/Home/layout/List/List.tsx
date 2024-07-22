@@ -9,6 +9,7 @@ import VideoList from 'components/custom/VideoList'
 export interface ListProps {
   mainVideos?: Core.I.VideoRecord[]
   highlightVideos?: Core.I.VideoRecord[]
+  onSelectVideo: (args: Core.I.VideoRecord) => void
 }
 
 const List: React.FC<ListProps> = (props) => {
@@ -18,11 +19,13 @@ const List: React.FC<ListProps> = (props) => {
       <VideoList 
         data={props.highlightVideos}
         horizontal
+        onPressVideo={props.onSelectVideo}
       />
     </Native.View>
   )
   return (
     <VideoList 
+      onPressVideo={props.onSelectVideo}
       data={props.mainVideos}
       headerList={(props.highlightVideos || []).length > 0 ? <HighLights /> : undefined}
     />
