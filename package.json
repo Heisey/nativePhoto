@@ -16,10 +16,10 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.1",
-    "react": "^18.3.1"
+    "react": "18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
+    "@types/react": "~18.2.45",
     "@types/js-cookie": "^3.0.6",
     "dotenv": "^16.4.5"
   }
