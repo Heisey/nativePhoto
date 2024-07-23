@@ -5,6 +5,7 @@ import * as Native from 'react-native'
 import * as Core from 'core'
 
 import VideoList from 'components/custom/VideoList'
+import VideoListHorizontal from 'components/custom/VideoListHorizontal'
 
 export interface ListProps {
   mainVideos?: Core.I.VideoRecord[]
@@ -15,13 +16,11 @@ export interface ListProps {
 const List: React.FC<ListProps> = (props) => {
 
   const HighLights = () => (
-    <Native.View>
-      <VideoList 
+      <VideoListHorizontal 
         data={props.highlightVideos}
-        horizontal
         onPressVideo={props.onSelectVideo}
+        
       />
-    </Native.View>
   )
   return (
     <VideoList 
@@ -32,12 +31,12 @@ const List: React.FC<ListProps> = (props) => {
   )
 }
 
-const styles = Native.StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+// const styles = Native.StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: 'center',
+//     justifyContent: 'center'
+//   }
+// })
 
 export default List
