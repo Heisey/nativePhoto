@@ -9,47 +9,69 @@ import * as Hooks from 'hooks'
 
 export interface VideoPlayerProps {
   video: Core.I.VideoRecord
+  onClose: () => void
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
   const videoRef = React.useRef<ExpoAv.Video>(null)
   const [play, togglePlay] = Hooks.common.useToggle(true)
-  const [fullSizze, toggleFullSize] = Hooks.common.useToggle(true)
+  const [fullSize, toggleFullSize] = Hooks.common.useToggle(true)
+  const [controlOverlay, toggleControlOverlay] = Hooks.common.useToggle()
 
   const onPlay = () => {
+    if (fullSize && !controlOverlay)  return
     videoRef.current?.playAsync()
     togglePlay()
   }
 
   const onPause = () => {
+    if (fullSize && !controlOverlay)  return
     videoRef.current?.pauseAsync()
     togglePlay()
   }
 
+  const toggleOverlay = () => {
+    if (!fullSize) return
+    toggleControlOverlay()
+  }
+
+  const toggleFullSizeSmall = () => {
+    if (fullSize) return
+    toggleFullSize()
+  }
+
+  const toggleFullSizeLarge = () => {
+    if (!controlOverlay) return
+    toggleFullSize()
+  }
+
   const renderControl = () => (
-    <Native.View style={styles.controlContainer}>
-      <Native.TouchableOpacity onPress={play ? onPause : onPlay}><Icon size={35} color='white' name={play ? 'pause-outline' : 'play-outline'} /></Native.TouchableOpacity>
-      <Native.TouchableOpacity><Icon size={35} color='white' name='close-outline' /></Native.TouchableOpacity>
-    </Native.View>
+    <Native.TouchableOpacity onPress={toggleOverlay} style={[styles.controlContainer, fullSize ? styles.controlContainerLarge : styles.controlContainerSmall, { opacity: controlOverlay ? 1 : 0 }]}>
+      <Native.TouchableOpacity onPress={play ? onPause : onPlay}><Icon size={fullSize ? 65 : 35} color='white' name={play ? 'pause-outline' : 'play-outline'} /></Native.TouchableOpacity>
+      {!fullSize && <Native.TouchableOpacity onPress={props.onClose}><Icon size={35} color='white' name='close-outline' /></Native.TouchableOpacity>}
+      {fullSize && <Native.TouchableOpacity onPress={toggleFullSizeLarge} style={styles.controlMinimize}><Icon size={45} color='white' name='chevron-down-outline' /></Native.TouchableOpacity>}
+    </Native.TouchableOpacity>
   )
   
   return (
-    <Native.View style={[styles.container, fullSizze ? styles.containerLarge : styles.containerSmall]}>
-      <Native.TouchableOpacity onPress={toggleFullSize}>
+    <Native.View style={[styles.container, fullSize ? styles.containerLarge : styles.containerSmall]}>
+      <Native.TouchableOpacity style={styles.videoButton} onPress={toggleFullSizeSmall}>
         <ExpoAv.Video 
           source={{ uri: props.video.videoUrl }}
           shouldPlay
-          style={[fullSizze ? styles.videoLarge : styles.videoSmall]}
+          style={[fullSize ? styles.videoLarge : styles.videoSmall]}
           ref={videoRef}
+          
         /> 
+        {fullSize && renderControl()}
       </Native.TouchableOpacity>
 
-      <Native.View style={[styles.innerContainer, fullSizze ? styles.innerContainerLarge : styles.innerContainerSmall]}>
-        <Native.View style={[styles.textContainer, fullSizze ? styles.textContainerLarge : styles.textContainerSmall]}>
-          <Native.Text style={styles.title}>{props.video.title}</Native.Text>
-          <Native.Text style={styles.subTitle}>{props.video.creatorName}</Native.Text>
+      <Native.View style={[styles.innerContainer, fullSize ? styles.innerContainerLarge : styles.innerContainerSmall]}>
+        <Native.View style={[styles.textContainer, fullSize ? styles.textContainerLarge : styles.textContainerSmall]}>
+          <Native.Text style={[styles.title, fullSize && styles.titleLarge]}>{props.video.title}</Native.Text>
+          <Native.Text style={[styles.subTitle, fullSize && styles.subTitleLarge]}>{props.video.creatorName}</Native.Text>
         </Native.View>
-        {!fullSizze && renderControl()}
+        {!fullSize && renderControl()}
       </Native.View>
     </Native.View>
   )
@@ -100,6 +122,23 @@ const styles = Native.StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row'
   },
+  controlContainerSmall: {
+
+  },
+  controlContainerLarge: {
+    justifyContent: 'center',
+    position: 'absolute',
+    height: '100%',
+    width: '100%'
+  },
+  controlMinimize: {
+    position: 'absolute',
+    top: 5,
+    right: 5
+  },
+  videoButton: {
+    position: 'relative'
+  },
   videoSmall: {
     width: 107,
     height: 60,
@@ -111,8 +150,14 @@ const styles = Native.StyleSheet.create({
   title: {
     color: 'white'
   },
+  titleLarge: {
+    fontSize: 21
+  },
   subTitle: {
     color: 'lightgrey'
+  },
+  subTitleLarge: {
+    fontSize: 16
   }
 })
 

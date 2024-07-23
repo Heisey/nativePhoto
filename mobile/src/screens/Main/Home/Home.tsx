@@ -35,7 +35,7 @@ const Home: React.FC<HomeProps> = (props) => {
         {videos.isLoading && <Loading />}
         {!videos.isLoading && <List onSelectVideo={selectedVideoHandler} mainVideos={videos.data?.data.records} highlightVideos={videos.data?.data.records} />}
       </Native.View>
-      {selectedVideo && <VideoPlayer video={selectedVideo} />}
+      {selectedVideo && <VideoPlayer onClose={() => selectedVideoHandler(undefined)} video={selectedVideo} />}
     </Native.SafeAreaView>
   )
 }
